@@ -12,113 +12,118 @@ Latest Version Android Studio
 ## ALGORITHM:
 Step1:Open Android Studio and create a new project.
 
-Step2:In the activity_main.xml file, design the layout with a TextInputEditText element for the text 
-field and a Button element for the "Navigate" button.
+Step2:In the activity_main.xml file, design the layout with a TextInputEditText element for the text field and a Button element for the "Navigate" button.
 
-Step3:In the MainActivity.java file, retrieve references to the text field and the button using their 
-IDs.
+Step3:In the MainActivity.java file, retrieve references to the text field and the button using their IDs.
 
 Step4:Set an OnClickListener for the button.
 
-Step5:Inside the OnClickListener, retrieve the text entered in the text field using the getText() 
-method.
+Step5:Inside the OnClickListener, retrieve the text entered in the text field using the getText() method.
 
-Step6:Create an Intent object to open a web page with the URL obtained from the text field. 
+Step6:Create an Intent object to open a web page with the URL obtained from the text field.
 
-Step7:Set the action of the intent to Intent.ACTION_VIEW to indicate that the intent is used for
-viewing something.
+Step7:Set the action of the intent to Intent.ACTION_VIEW to indicate that the intent is used for viewing something.
 
-Step8:Set the data of the intent to the URL obtained from the text field using the Uri.parse() 
-method.
+Step8:Set the data of the intent to the URL obtained from the text field using the Uri.parse() method.
 
-Step9:Set the type of the intent to "text/html" or "text/plain" to specify the type of data being 
-viewed.
+Step9:Set the type of the intent to "text/html" or "text/plain" to specify the type of data being viewed.
 
-Step10:Use the startActivity() method with the intent to start the activity that can handle the 
-implicit intent.
+Step10:Use the startActivity() method with the intent to start the activity that can handle the implicit intent.
 
 Step11:Run the application on an Android device or emulator to see the desired functionality.
 
 
 ## PROGRAM:
 ```
-/*
-Program to print the text “Implicitintent”.
-Developed by: Lathish Kumar.B
-Registeration Number : 212221040087
-*/
-MainActivity.xml:
+Developed By: Lathish kumar B
+Reg.No:212221040087
+```
+## activity_main.xml
+```
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-package com.example.experiment_3;
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="102dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="300dp"
+        android:text="Click"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cinzel_decorative_black"
+        android:text="Enter your URL"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+## MainActivity.java
+```
+package com.example.implict1;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
-Button button; 
-EditText editText; 
-@Override
-protected void onCreate(Bundle savedInstanceState) { 
-super.onCreate(savedInstanceState);
-setContentView(R.layout.activity_main); 
-button = findViewById(R.id.button);
-editText =findViewById(R.id.editText); 
-button.setOnClickListener(view -> {
-String url=editText.getText().toString();
-});
-}
-Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url)); 
-startActivity(intent);
-}
-}
 
-activity_main.xml:
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        EditText editText;
+        Button button;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-<androidx.constraintlayout.widget.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android" 
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent" 
-android:layout_height="match_parent" 
-tools:context=".MainActivity">
-<EditText
-android:id="@+id/editText"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginStart="8dp"
-android:layout_marginEnd="8dp"
-android:ems="10"
-android:importantForAutofill="no"
-android:inputType="text"
-android:minHeight="48dp"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintHorizontal_bias="0.589"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent"
-app:layout_constraintVertical_bias="0.476"
-tools:ignore="LabelFor,TextFields,SpeakableTextPresentCheck" /> 
-<Button
-android:id="@+id/button"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginStart="156dp"
-android:layout_marginTop="172dp"
-android:text="@string/app_name"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintHorizontal_bias="0.0"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent"
-app:layout_constraintVertical_bias="0.53" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        button = findViewById(R.id.button2);
+        editText = (EditText) findViewById(R.id.Text);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url=editText.getText().toString();
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+    }
+}
 ```
 
 ## OUTPUT
-![244674526-5ce5c073-a484-4ffa-9b62-88c44312752b 1](https://github.com/Lathishkum/exp3/assets/144109092/bd9399a3-246d-45e0-9830-03f75486ae86)
-![244674502-ea20a5dc-30a6-4132-8301-937c333a2d3a 1](https://github.com/Lathishkum/exp3/assets/144109092/5509c492-c352-4b2e-9ccb-c5cef90e4f53)
+![image](https://github.com/JaganSivakumaran/Implicitintent/assets/134905062/810e1d20-f2ed-41e4-92d8-17b14f6ad29f)
+![image](https://github.com/JaganSivakumaran/Implicitintent/assets/134905062/71392dd0-7143-40e3-bb06-3d253a07fe07)
+
 
 
 
